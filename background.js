@@ -1,0 +1,107 @@
+/*chrome.browserAction.onClicked.addListener(
+  function(activeTab) {
+    chrome.tabs.executeScript(null, {file: "content.js"});
+  }
+)*/
+
+/* Regex-pattern to check URLs against.
+   It matches URLs like: http[s]://[...]stackoverflow.com[...] */
+
+/* A function creator for callbacks */
+function updateDatabase(element) {
+  $.post('localhost:3000/postLikedImage', {
+    userID: 'ID HERE',
+    imageURL: 'URL'
+    timestamp: 'TIMESTAMP'
+  })
+}
+
+/* When the browser-action button is clicked... */
+chrome.browserAction.onClicked.addListener(function(tab) {
+    /*...check the URL of the active tab against our pattern and... */
+        /* ...if it matches, send a message specifying a callback too */
+        chrome.tabs.sendMessage(tab.id, { text: "report_back" },
+                                doStuffWithDOM);
+
+});
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+function getSourceAsDOM(url)
+{
+    xmlhttp=new XMLHttpRequest();
+    xmlhttp.open("GET",url,false);
+    xmlhttp.send();
+    parser=new DOMParser();
+    return parser.parseFromString(xmlhttp.responseText,"text/html");
+}
+
+chrome.browserAction.onClicked.addListener(
+  function() {
+
+    var d = new Date();
+    getTime(d);
+    getDate(d);
+    chrome.tabs.query({'active': true, 'lastFocusedWindow': true},
+      function (tabs) {
+        var url = tabs[0].url;
+        imagePageDOM = getSourceAsDOM(url);
+        images = imagePageDOM.getElementsByTagName('img');
+        alert(images[0].getAttribute("src"));
+      })
+
+    //var images = document.getElementsByTagName('img');
+    //alert("Found Images1");
+    //alert(images.length);
+    //var url  = images[0].getAttribute("src");
+    //alert("Image URL: " + url);
+  }
+);
+
+
+
+
+/*
+var divElements = document.getElementsByTagName('div');
+var button;
+
+for(var i = 0; i < divElements.length; i++) {
+  if(divElements[i].getAttribute("Class") === "_4f _h _z6 _4q") {
+    button = document.createElement("button");
+    button.innerHTML  = "Do Something";
+    divElements[i].appendChild(button);
+  }
+
+}
+
+button.addEventListener("click",
+function() {
+  alert("did something");
+});
+
+/*
+for(var i = 0; i < imgElements.length; i++) {
+  imgElements[i].src = "https://png.icons8.com/metro/1600/hearts.png";
+}
+
+var imgLinks = document.getElementsByTagName('a');
+
+
+for(var i = 0; i < imgLinks.length; i++) {
+
+  if(imgLinks[i].getAttribute("class") === "imageLink") {
+    imgLinks[i].href = "https://png.icons8.com/metro/1600/hearts.png";
+  }
+}
+
+*/

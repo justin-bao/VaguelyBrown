@@ -8,11 +8,11 @@
    It matches URLs like: http[s]://[...]stackoverflow.com[...] */
 
 /* A function creator for callbacks */
-function updateDatabase(element) {
+function updateDatabase(imgURL) {
   $.post('localhost:3000/postLikedImage', {
     userID: 'ID HERE',
-    imageURL: 'URL'
-    timestamp: 'TIMESTAMP'
+    imageURL: imgURL,
+    timestamp: Date.now()
   })
 }
 

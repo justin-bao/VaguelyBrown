@@ -17,17 +17,19 @@ firebase.initializeApp(config);
 
 /* A function creator for callbacks */
 function updateDatabase(imgURL) {
-  userBaseRef = firebase.database().ref('Ishan').push({
-    outfit_image: imgURL
+  userBaseRef = firebase.database().ref('Ishan').push();
+  $.ajax({
+    url: 'https://vageulybrown-ixukjmvrvm.now.sh/predict/'+imgURL,
+    method: 'GET',
+    success: function(data) {
+      console.log(data);
+      userBaseRef.set({
+        outfit_image: imgURL,
+        colorscheme: data.colors,
+        clothing: data.apparel
+      });
+    },
   });
-  /*$.get('localhost:3000/predict/'+imgURL, function(data) {
-    alert(data);
-    userBaseRef.set({
-      outfit_image: imgURL,
-      colorscheme: data,
-      clothing: data
-    });
-  });*/
 }
   /*('localhost:3000/postLikedImage', {
     userID: 'ID HERE',

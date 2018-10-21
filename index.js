@@ -1,6 +1,5 @@
 const Clarifai = require('clarifai')
 const express = require('express');
-var bodyParser = require('body-parser')
 const clarifai_app = new Clarifai.App({
  apiKey: '2155469d16cb4e3d86271d7bf9a0cd1a'
 });
@@ -8,8 +7,6 @@ const clarifai_app = new Clarifai.App({
 var $prediction;
 
 app = express();
-app.use(bodyParser.urlencoded({ extended: false}));
-app.use(bodyParser.json());
 port = process.env.PORT || 3000;
 
 function predict(url, res) {
@@ -21,7 +18,7 @@ function predict(url, res) {
         'colors' : models[1].data.colors
       };
       console.log($prediction)
-      res.send($prediction.apparel);
+      res.send($prediction);
     },
     function(err){
       console.log("ERROR:" + err);
@@ -31,8 +28,8 @@ function predict(url, res) {
 
 
 app.get('/', (req, res) => {
-  res.render('index');
-  //res.send("Hello World!")
+  //res.render('index.html');
+  res.send("Hello World!")
 
 });
 
@@ -66,12 +63,6 @@ app.get('/getClothes', (req, res) => {
 
 app.get('/getImageUrl', (req, res) => {
 
-});
-
-
-app.post('/postLikedImage', function (req, res) {
-  console.log(req.body);
-  res.end("yes");
 });
 
 

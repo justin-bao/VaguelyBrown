@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+  "name": "Vaguely Brown",
+  "description": "Like images of outfits while browsing the
+  web and add them to your collection.",
+  "version": "1",
+  "author": "Vaguely Brown Team",
+
+  "content_scripts": [{
+    "matches": ["http://*/*", "https://*/*"],
+    "js": ["content.js"]
+    }],
+
+    "content_security_policy":"script-src 'self' https://www.gstatic.com/ https://*.firebaseio.com https://www.googleapis.com https://ajax.googleapis.com; object-src 'self'; connect-src 'self'",
+
+  "background": {
+    "page": "background.html",
+    "persistent" : false
+  },
+
+  "browser_action": {
+    "default_icon": "tuxedo (1).png"
+  },
+
+  "permissions": [
+    "activeTab"
+  ]
+
+
+}

@@ -1,0 +1,19 @@
+{
+  "manifest_version": 2,
+  "name": "Vaguely Brown",
+  "description": "Like images of outfits while browsing the
+  web and add them to your collection.",
+  "version": "1",
+  "author": "Vaguely Brown Team",
+
+  "browser_action": {
+    "default_icon": "tab-icon.png",
+    "default_title": "Welcome to Vaguely Brown!"
+  },
+
+  "chrome_url_overrides" : {
+    "newtab": "newtab.html"
+  },
+
+  "permissions": ["activeTab"]
+}

@@ -1,9 +1,8 @@
-// Checking page title
-if (true) {
-    //Creating Elements
-    var btn = document.createElement("BUTTON")
-    var t = document.createTextNode("CLICK ME");
-    btn.appendChild(t);
-    //Appending to DOM
-    document.head.appendChild(btn);
+var images = document.getElementsByTagName('img');
+
+alert(images.length);
+
+
+for (var i = 0; i < images.length; i++) {
+  alert(images[i].src)
 }

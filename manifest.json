@@ -21,7 +21,8 @@
   },
 
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "identity"
   ]
 
 

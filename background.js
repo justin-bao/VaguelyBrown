@@ -1,11 +1,11 @@
 
 /* A function creator for callbacks */
 function updateDatabase(imgURL) {
-  $.post('localhost:3000/postLikedImage', {
-    userID: 'ID HERE',
-    imageURL: imgURL,
-    timestamp: Date.now()
-  })
+  //$.post('localhost:3000/postLikedImage', {
+  //  userID: 'ID HERE',
+  //  imageURL: imgURL,
+  //  timestamp: Date.now()
+  //})
 }
 
 /* When the browser-action button is clicked... */
